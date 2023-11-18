@@ -57,7 +57,7 @@ export const updateBookInfor = async (book_id: string, book: any) => {
     throw err;
   }
 };
-export const deleteBook = async (book_id: string) => {
+export const deleteBookById = async (book_id: string) => {
   try {
     const sql = "DELETE FROM books WHERE book_id = ?";
     await (await conn).query(sql, [book_id]);

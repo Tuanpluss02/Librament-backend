@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import {
   addNewBook,
+  deleteBookById,
   getBookById,
   updateBookInfor,
 } from "../services/book.service";
+import { iResponse } from "../utils/iResponse";
 
 export default class BookController {
   static async getBook(req: Request, res: Response) {
@@ -11,9 +13,9 @@ export default class BookController {
     const book = await getBookById(book_id);
 
     if (!book) {
-      return res.status(404).send({ message: "Book not found" });
+      return iResponse(res, 404, "Book not found");
     }
-    return res.status(200).send(book);
+    return iResponse(res, 200, "Get book successfully", book);
   }
   static async addBook(req: Request, res: Response) {
     const {
@@ -29,7 +31,7 @@ export default class BookController {
     const book = await getBookById(book_id);
     console.log(book);
     if (book) {
-      return res.status(400).send({ message: "ID already exists" });
+      return iResponse(res, 400, "Book already exists");
     }
     const result = await addNewBook({
       book_id,
@@ -41,7 +43,7 @@ export default class BookController {
       quantity,
       publisher_id,
     });
-    return res.status(201).send(result);
+    return iResponse(res, 201, "Add new book successfully", result);
   }
   static async updateBook(req: Request, res: Response) {
     const { book_id } = req.params;
@@ -56,7 +58,7 @@ export default class BookController {
     } = req.body;
     const book = await getBookById(book_id);
     if (!book) {
-      return res.status(404).send({ message: "Book not found" });
+      return iResponse(res, 404, "Book not found");
     }
     const result = await updateBookInfor(book_id, {
       title,
@@ -67,18 +69,15 @@ export default class BookController {
       quantity,
       publisher_id,
     });
+    return iResponse(res, 200, "Update book successfully", result);
   }
-  static async deleteBook(req: Request, res: Response) {}
+  static async deleteBook(req: Request, res: Response) {
+    const { book_id } = req.params;
+    const book = await getBookById(book_id);
+    if (!book) {
+      return iResponse(res, 404, "Book not found");
+    }
+    const result = await deleteBookById(book_id);
+    return iResponse(res, 200, "Delete book successfully");
+  }
 }
-
-// CREATE TABLE books (
-//     book_id VARCHAR(55) PRIMARY KEY NOT NULL,
-//     publisher_id VARCHAR(55) NOT NULL,
-//     title VARCHAR(255) NOT NULL,
-//     author VARCHAR(255) NOT NULL,
-//     genre VARCHAR(255) NOT NULL,
-//     publication_year VARCHAR(10) NOT NULL,
-//     isbn VARCHAR(255) NOT NULL,
-//     quantity INT NOT NULL
-//     FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id),
-// );

@@ -1,6 +1,5 @@
 import { RowDataPacket } from "mysql2";
 import conn from "../database";
-import { v4 as uuid } from "uuid";
 import { PasswordUtil } from "../utils/passwordUtil";
 
 export const getEmployeeById = async (employee_id: string) => {

@@ -27,12 +27,12 @@ CREATE TABLE borrowers (
 );
 
 CREATE TABLE borrowing_records (
-    record_id VARCHAR(55) PRIMARY KEY NOT NULL,
+    record_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     book_id VARCHAR(55) NOT NULL,
     borrower_id VARCHAR(55) NOT NULL,
     borrow_date DATE NOT NULL,
     return_date DATE NOT NULL,
-    status VARCHAR(255) NOT NULL,
+    status ENUM('borrowed', 'returned', 'overdue', 'pending') NOT NULL,
     FOREIGN KEY (book_id) REFERENCES books(book_id),
     FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
 );
