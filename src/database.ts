@@ -1,8 +1,10 @@
 import * as mysql from "mysql2/promise";
 
-const pool = mysql.createPool({
+const conn = mysql.createConnection({
   user: "root",
   password: "root",
-  database: "test",
+  database: "library_system",
   host: "localhost",
 });
+
+export default conn;
