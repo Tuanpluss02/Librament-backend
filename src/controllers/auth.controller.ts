@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { createUser, getUserByEmail } from "../services/user.service";
+import { addEmployee, getEmployeeById } from "../services/employee.service";
 import { generateToken } from "../utils/jwtUtil";
 import { PasswordUtil } from "../utils/passwordUtil";
 export default class AuthController {
   static async login(req: Request, res: Response) {
-    const { email, password } = req.body;
-    const user = await getUserByEmail(email);
+    const { employee_id, password } = req.body;
+    const user = await getEmployeeById(employee_id);
     if (!user) {
       return res.status(404).send({ message: "User not found" });
     }
@@ -18,19 +18,18 @@ export default class AuthController {
   }
 
   static async register(req: Request, res: Response) {
-    const { email, password, full_name, role } = req.body;
-    const user = await getUserByEmail(email);
+    const { employee_id, employee_name, password, position } = req.body;
+    const user = await getEmployeeById(employee_id);
     if (user) {
-      return res.status(400).send({ message: "Email already exists" });
+      return res.status(400).send({ message: "ID already exists" });
     }
-    const newUser = {
-      email,
+    const result = await addEmployee({
+      employee_id,
+      employee_name,
       password,
-      full_name,
-      role,
-    };
-    const result = await createUser(newUser);
-    const token = generateToken(result.user_id, result.role);
+      position,
+    });
+    const token = generateToken(result.employee_id, result.position);
     return res.status(201).send({ access_token: token });
   }
 }

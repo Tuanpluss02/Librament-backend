@@ -2,15 +2,26 @@ import { NextFunction, Request, Response } from "express";
 import Joi, { ObjectSchema } from "joi";
 
 const registerSchema: ObjectSchema = Joi.object({
-  email: Joi.string().email().required(),
+  employee_id: Joi.string().required(),
+  employee_name: Joi.string().required(),
   password: Joi.string().min(6).required(),
-  full_name: Joi.string().required(),
-  role: Joi.string().valid("boss", "staff").required(),
+  position: Joi.string().valid("admin", "staff").required(),
 });
 
 const loginSchema: ObjectSchema = Joi.object({
-  email: Joi.string().email().required(),
+  employee_id: Joi.string().required(),
   password: Joi.string().min(6).required(),
+});
+
+const newbookSchema: ObjectSchema = Joi.object({
+  book_id: Joi.string().required(),
+  publisher_id: Joi.string().required(),
+  title: Joi.string().required(),
+  author: Joi.string().required(),
+  genre: Joi.string().required(),
+  publication_year: Joi.number().required(),
+  isbn: Joi.string().required(),
+  quantity: Joi.number().required(),
 });
 
 export const registerBodyValidate = (
@@ -22,7 +33,6 @@ export const registerBodyValidate = (
   if (error) {
     return res.status(400).send({ message: error.details[0].message });
   }
-  req.body.email = req.body.email.toLowerCase();
   next();
 };
 
@@ -35,6 +45,17 @@ export const loginBodyValidate = (
   if (error) {
     return res.status(400).send({ message: error.details[0].message });
   }
-  req.body.email = req.body.email.toLowerCase();
+  next();
+};
+
+export const newbookBodyValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { error } = newbookSchema.validate(req.body);
+  if (error) {
+    return res.status(400).send({ message: error.details[0].message });
+  }
   next();
 };

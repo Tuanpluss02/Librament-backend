@@ -5,12 +5,14 @@ USE library_system;
 
 CREATE TABLE books (
     book_id VARCHAR(55) PRIMARY KEY NOT NULL,
+    publisher_id VARCHAR(55) NOT NULL,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
     genre VARCHAR(255) NOT NULL,
-    publication_year INT NOT NULL,
+    publication_year VARCHAR(10) NOT NULL,
     isbn VARCHAR(255) NOT NULL,
     quantity INT NOT NULL
+    FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id),
 );
 
 CREATE TABLE borrowers (
@@ -33,6 +35,7 @@ CREATE TABLE borrowing_records (
 
 CREATE TABLE employees (
     employee_id VARCHAR(55) PRIMARY KEY NOT NULL,
+    password VARCHAR(255) NOT NULL, 
     employee_name VARCHAR(255) NOT NULL,
     position VARCHAR(255) NOT NULL
 );
@@ -40,12 +43,4 @@ CREATE TABLE employees (
 CREATE TABLE publishers (
     publisher_id VARCHAR(55) PRIMARY KEY NOT NULL,
     publisher_name VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE users (
-    user_id VARCHAR(55) PRIMARY KEY NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    full_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    role VARCHAR(255) NOT NULL
 );
