@@ -5,8 +5,10 @@ export const addNewRecord = async (borrow: any) => {
     try {
       const sql = "INSERT INTO borrowing_records SET ?";
       const values = {
+        record_id: borrow.record_id,
         book_id: borrow.book_id,
         borrower_id: borrow.borrower_id,
+        employee_id: borrow.employee_id,
         borrow_date: borrow.borrow_date,
         return_date: borrow.return_date,
         status: borrow.status,

@@ -41,7 +41,7 @@ export const recordSchema: ObjectSchema = Joi.object({
   book_id: Joi.string().required(),
   borrower_id: Joi.string().required(),
   borrow_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/).required(),
-  return_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/).min(Joi.ref('borrow_date')).required(),
+  return_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/).required(),
   status: Joi.string().valid("borrowed", "returned", "overdue", "pending").required(),
 });
 
@@ -49,7 +49,7 @@ export const updateRecordSchema: ObjectSchema = Joi.object({
   book_id: Joi.string(),
   borrower_id: Joi.string(),
   borrow_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/),
-  return_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/).min(Joi.ref('borrow_date')),
+  return_date: Joi.string().pattern(/^\d{2}\/\d{2}\/\d{4}$/),
   status: Joi.string().valid("borrowed", "returned", "overdue", "pending"),
 });
 

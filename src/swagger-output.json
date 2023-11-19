@@ -1008,10 +1008,6 @@
             "type": "string",
             "example": "BOOK0001"
           },
-          "employee_id": {
-            "type": "string",
-            "example": "EMP0001"
-          },
           "borrower_id": {
             "type": "string",
             "example": "BOR0001"
@@ -1026,12 +1022,11 @@
           },
           "status": {
             "type": "string",
-            "example": "Borrowed"
+            "example": "borrowed"
           }
         },
         "required": [
           "book_id",
-          "employee_id",
           "borrower_id",
           "borrow_date",
           "return_date",

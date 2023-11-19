@@ -24,7 +24,10 @@ export class RecordController {
               }
             }
             } */
+            console.log("newBorrowRecord");
+            
             const { book_id, borrower_id, borrow_date, return_date} = req.body;
+            const employee_id = res.locals.payload.sub;
             const record_id = await nextId("REC");
             const status = Status.borrowed;
             const borrow_date_format = stringToDate(borrow_date);
@@ -33,6 +36,7 @@ export class RecordController {
                 record_id,
                 book_id,
                 borrower_id,
+                employee_id,
                 borrow_date: borrow_date_format,
                 return_date: return_date_format,
                 status,

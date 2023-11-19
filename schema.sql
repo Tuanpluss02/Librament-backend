@@ -38,7 +38,7 @@ CREATE TABLE borrowing_records (
     return_date DATE NOT NULL,
     status ENUM('borrowed', 'returned', 'overdue', 'pending') NOT NULL,
     FOREIGN KEY (book_id) REFERENCES books(book_id),
-    FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
+    FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id),
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
 

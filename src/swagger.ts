@@ -67,11 +67,10 @@ const doc = {
       },
       record: {
         $book_id: "BOOK0001",
-        $employee_id: "EMP0001",
         $borrower_id: "BOR0001",
         $borrow_date: "20/10/2023",
         $return_date: "20/11/2023",
-        $status: "Borrowed",
+        $status: "borrowed",
       },
       publisher: {
         $publisher_name: "Publisher name",
