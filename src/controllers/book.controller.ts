@@ -93,7 +93,6 @@ export default class BookController {
             "bearerAuth": []
     }]
     #swagger.requestBody = {
-      required: true,
       content: {
         "application/x-www-form-urlencoded": {
           schema: {

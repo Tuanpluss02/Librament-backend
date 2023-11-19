@@ -24,7 +24,6 @@ export class RecordController {
               }
             }
             } */
-            console.log("newBorrowRecord");
             
             const { book_id, borrower_id, borrow_date, return_date} = req.body;
             const employee_id = res.locals.payload.sub;
@@ -103,7 +102,6 @@ export class RecordController {
                 "bearerAuth": []
         }]
         #swagger.requestBody = {
-            required: true,
             content: {
               "application/x-www-form-urlencoded": {
                 schema: {

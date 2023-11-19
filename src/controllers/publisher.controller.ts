@@ -74,7 +74,6 @@ export default class PublisherController {
                 "bearerAuth": []
         }]
         #swagger.requestBody = {
-            required: true,
             content: {
                 "application/x-www-form-urlencoded": {
                     schema: {
