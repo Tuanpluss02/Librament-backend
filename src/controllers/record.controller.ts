@@ -47,7 +47,7 @@ export class RecordController {
                 "bearerAuth": []
         }] */
     
-            const { record_id } = req.params;
+            const  record_id  = req.params.record_id as string;
             const record = await getRecordById(record_id);
             if (!record) {
                 return iResponse(res, 404, "Record not found");
@@ -66,9 +66,13 @@ export class RecordController {
         #swagger.security = [{
                 "bearerAuth": []
         }]
+        #swagger.parameters['record_id'] = {
+                in: 'query',
+                required: true,
+                type: 'string'
         } */
     
-            const { record_id } = req.params;
+            const record_id = req.query.record_id as string;
             const record = await getRecordById(record_id);
             if (!record) {
                 return iResponse(res, 404, "Record not found");

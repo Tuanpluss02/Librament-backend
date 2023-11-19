@@ -18,8 +18,13 @@ export default class BookController {
     #swagger.security = [{
             "bearerAuth": []
     }]
+    #swagger.parameters['book_id'] = {
+            in: 'query',
+            required: true,
+            type: 'string'
+    }
     } */
-    const book_id = req.query.id as string;
+    const book_id = req.query.book_id as string;
     const book = await getBookById(book_id);
     if (!book) {
       return iResponse(res, 404, "Book not found");

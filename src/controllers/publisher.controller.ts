@@ -50,8 +50,15 @@ export default class PublisherController {
         #swagger.summary = 'Get publisher by id'
         #swagger.security = [{
                 "bearerAuth": []
-        }] */
-        const { publisher_id } = req.params;
+        }] 
+        #swagger.parameters['publisher_id'] = {
+                in: 'query',
+                required: true,
+                type: 'string'
+        }
+        }
+        */
+        const publisher_id  = req.query.publisher_id as string;
         const result = await getPublisherById(publisher_id);
         if (!result) {
             return iResponse(res, 404, "Publisher not found");
