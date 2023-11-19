@@ -15,7 +15,7 @@ export default class BookController {
     #swagger.description = 'Endpoint to get book.'
     #swagger.summary = 'Get book'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
     const { book_id } = req.params;
@@ -32,7 +32,7 @@ export default class BookController {
     #swagger.description = 'Endpoint to add new book.'
     #swagger.summary = 'Add new book'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
       required: true,
@@ -73,7 +73,7 @@ export default class BookController {
     #swagger.description = 'Endpoint to update book.'
     #swagger.summary = 'Update book'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
       required: true,
@@ -115,7 +115,7 @@ export default class BookController {
     #swagger.description = 'Endpoint to delete book.'
     #swagger.summary = 'Delete book'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
     

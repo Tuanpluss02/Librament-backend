@@ -112,7 +112,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       },
@@ -130,6 +130,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -139,7 +146,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -167,6 +174,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -176,7 +190,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -204,7 +218,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -226,6 +240,15 @@
         ],
         "summary": "Get all records",
         "description": "Endpoint to get all records.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -233,7 +256,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -253,6 +276,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -262,7 +292,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -274,6 +304,15 @@
         ],
         "summary": "Add new record",
         "description": "Endpoint to add new record.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -281,7 +320,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -311,6 +350,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -320,7 +366,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -350,6 +396,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -359,7 +412,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -379,6 +432,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -388,7 +448,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -400,6 +460,15 @@
         ],
         "summary": "Get all borrowers",
         "description": "Endpoint to get all borrowers.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -407,7 +476,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -427,6 +496,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -436,7 +512,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }
@@ -448,6 +524,15 @@
         ],
         "summary": "Add new borrower",
         "description": "Endpoint to add new borrower.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -455,7 +540,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -485,6 +570,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -494,7 +586,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ],
         "requestBody": {
@@ -524,6 +616,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -533,7 +632,7 @@
         },
         "security": [
           {
-            "apiKeyAuth": []
+            "bearerAuth": []
           }
         ]
       }

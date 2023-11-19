@@ -1,8 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import e, { NextFunction, Request, Response } from "express";
 import {
   registerSchema,
   loginSchema,
   newbookSchema,
+  recordSchema,
 } from "../schemas/validateSchema";
 import { iResponse } from "../utils/iResponse";
 import Joi from "joi";
@@ -36,6 +37,22 @@ export const loginBodyValidate = (
 };
 
 export const newbookBodyValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, newbookSchema);
+};
+
+export const newRecordValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+}
+
+export const updateBookValidate = (
   req: Request,
   res: Response,
   next: NextFunction

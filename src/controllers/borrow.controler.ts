@@ -12,7 +12,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to add new borrower.'
     #swagger.summary = 'Add new borrower'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
       required: true,
@@ -40,7 +40,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to get borrower.'
     #swagger.summary = 'Get borrower'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
         const { borrower_id } = req.params;
@@ -56,7 +56,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to get all borrowers.'
     #swagger.summary = 'Get all borrowers'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
         const borrowers = await getAllBorrowers();
@@ -68,7 +68,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to update borrower.'
     #swagger.summary = 'Update borrower'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
         required: true,
@@ -100,7 +100,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to add new borrower.'
     #swagger.summary = 'Add new borrower'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
         const { borrower_id } = req.params;
@@ -117,7 +117,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to add new record.'
     #swagger.summary = 'Add new record'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
         required: true,
@@ -149,7 +149,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to return book.'
     #swagger.summary = 'Return book'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }] */
 
         const { record_id } = req.params;
@@ -169,7 +169,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to get record.'
     #swagger.summary = 'Get record'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
 
@@ -186,7 +186,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to get all records.'
     #swagger.summary = 'Get all records'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
         const records = await getAllRecords();
@@ -197,7 +197,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to add new record.'
     #swagger.summary = 'Add new record'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     #swagger.requestBody = {
         required: true,
@@ -233,7 +233,7 @@ export default class BorrowController {
     #swagger.description = 'Endpoint to delete record.'
     #swagger.summary = 'Delete record'
     #swagger.security = [{
-            "apiKeyAuth": []
+            "bearerAuth": []
     }]
     } */
 
