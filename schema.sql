@@ -1,4 +1,4 @@
--- Active: 1700270750053@@localhost@3306
+-- Active: 1700356960557@@localhost@3306
 CREATE DATABASE IF NOT EXISTS library_system;
 
 USE library_system;
@@ -27,7 +27,7 @@ CREATE TABLE borrowers (
 );
 
 CREATE TABLE borrowing_records (
-    record_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    record_id VARCHAR(55) PRIMARY KEY NOT NULL,
     book_id VARCHAR(55) NOT NULL,
     borrower_id VARCHAR(55) NOT NULL,
     borrow_date DATE NOT NULL,
@@ -44,23 +44,49 @@ CREATE TABLE employees (
     position VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE code_table (
+    code_id VARCHAR(55) PRIMARY KEY NOT NULL,
+    code_number INT NOT NULL
+);
 
-INSERT INTO publishers VALUES ('PUB001', 'Penguin Random House');
-INSERT INTO publishers VALUES ('PUB002', 'HarperCollins');
-INSERT INTO publishers VALUES ('PUB003', 'Simon & Schuster');
-INSERT INTO publishers VALUES ('PUB004', 'Hachette Livre');
-INSERT INTO publishers VALUES ('PUB005', 'Macmillan Publishers');
-
-INSERT INTO books VALUES ('B001', 'PUB001', 'The Great Gatsby', 'F. Scott Fitzgerald', 'Novel', '1925', '9780743273565', 5);
-INSERT INTO books VALUES ('B002', 'PUB002', 'The Catcher in the Rye', 'J. D. Salinger', 'Novel', '1951', '9780316769174', 5);
-INSERT INTO books VALUES ('B003', 'PUB003', 'The Grapes of Wrath', 'John Steinbeck', 'Novel', '1939', '9780143039433', 5);
-INSERT INTO books VALUES ('B004', 'PUB004', 'To Kill a Mockingbird', 'Harper Lee', 'Novel', '1960', '9780446310789', 5);
-INSERT INTO books VALUES ('B005', 'PUB002', 'The Color Purple', 'Alice Walker', 'Novel', '1982', '9780156028356', 5);
-INSERT INTO books VALUES ('B006', 'PUB005', 'Beloved', 'Toni Morrison', 'Novel', '1987', '9781400033416', 5);
+INSERT INTO code_table VALUES ('BOR', 0);
+INSERT INTO code_table VALUES ('EMP', 0);
+INSERT INTO code_table VALUES ('REC', 0);
+INSERT INTO code_table VALUES ('PUB', 0);
+INSERT INTO code_table VALUES ('BOOK', 0);
 
 
-INSERT INTO borrowers VALUES ('BOR001', 'John Doe', '123 Main Street, New York, NY 10030', '212-555-1234');
-INSERT INTO borrowers VALUES ('BOR002', 'Jane Doe', '123 Main Street, New York, NY 10030', '212-555-1234');
-INSERT INTO borrowers VALUES ('BOR003', 'John Smith', '123 Main Street, New York, NY 10030', '212-555-1234');
-INSERT INTO borrowers VALUES ('BOR004', 'Jane Smith', '123 Main Street, New York, NY 10030', '212-555-1234');
-INSERT INTO borrowers VALUES ('BOR005', 'John Doe', '123 Main Street, New York, NY 10030', '212-555-1234');
+-- insert vietnamese data
+INSERT INTO publishers VALUES ('PUB0001', 'Nhà xuất bản Kim Đồng');
+INSERT INTO publishers VALUES ('PUB0002', 'Nhà xuất bản Trẻ');
+INSERT INTO publishers VALUES ('PUB0003', 'Nhà xuất bản Giáo dục');
+INSERT INTO publishers VALUES ('PUB0004', 'Nhà xuất bản Thanh Niên');
+INSERT INTO publishers VALUES ('PUB0005', 'Nhà xuất bản Văn hóa - Văn nghệ');
+
+
+INSERT INTO books VALUES ('BOOK0001', 'PUB0001', 'Bố Già', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0002', 'PUB0001', 'Bố Già 2', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0003', 'PUB0001', 'Bố Già 3', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0004', 'PUB0001', 'Bố Già 4', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0005', 'PUB0001', 'Bố Già 5', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
+
+
+INSERT INTO books VALUES ('BOOK0006', 'PUB0002', 'Harry Potter và Hòn đá Phù thủy', 'J.K. Rowling', 'Tiểu thuyết', '1997', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0007', 'PUB0002', 'Harry Potter và Phòng chứa Bí mật', 'J.K. Rowling', 'Tiểu thuyết', '1998', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0008', 'PUB0002', 'Harry Potter và Tù nhân Azkaban', 'J.K. Rowling', 'Tiểu thuyết', '1999', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0009', 'PUB0002', 'Harry Potter và Chiếc cốc lửa', 'J.K. Rowling', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
+
+
+INSERT INTO books VALUES ('BOOK0010', 'PUB0003', 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0011', 'PUB0003', 'Cho tôi xin một vé đi tuổi thơ', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
+
+INSERT INTO books VALUES ('BOOK0012', 'PUB0004', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
+
+INSERT INTO books VALUES ('BOOK0013', 'PUB0005', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
+
+
+INSERT INTO borrowers VALUES ('BOR0001', 'Nguyễn Văn A', 'Hà Nội', '0123456789');
+INSERT INTO borrowers VALUES ('BOR0002', 'Nguyễn Văn B', 'Hà Nội', '0123456789');
+INSERT INTO borrowers VALUES ('BOR0003', 'Nguyễn Văn C', 'Hà Nội', '0123456789');
+INSERT INTO borrowers VALUES ('BOR0004', 'Nguyễn Văn D', 'Hà Nội', '0123456789');
+INSERT INTO borrowers VALUES ('BOR0005', 'Nguyễn Văn E', 'Hà Nội', '0123456789');
