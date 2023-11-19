@@ -51,6 +51,7 @@ export const updatePublisherInfor = async (
         const publisherExist = await getPublisherById(publisher_id);
         const values = {
             publisher_name: publisher.publisher_name || publisherExist.publisher_name,
+            address: publisher.address || publisherExist.address,
             phone_number: publisher.phone_number || publisherExist.phone_number,
         };
         await (await conn).query(sql, [values, publisher_id]);
@@ -74,16 +75,6 @@ export const deletePublisherById = async (publisher_id: string) => {
 export const getBooksOfPublisher = async (publisher_id: string) => {
     try {
         const sql = "SELECT * FROM books WHERE publisher_id = ?";
-        const [rows] = await (await conn).query(sql, [publisher_id]);
-        return rows;
-    } catch (err) {
-        throw err;
-    }
-}
-
-export const getRecordsOfPublisher = async (publisher_id: string) => {
-    try {
-        const sql = "SELECT * FROM records WHERE publisher_id = ?";
         const [rows] = await (await conn).query(sql, [publisher_id]);
         return rows;
     } catch (err) {

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   addNewBook,
   deleteBookById,
+  getAllBooks,
   getBookById,
   updateBookInfor,
 } from "../services/book.service";
@@ -26,6 +27,17 @@ export default class BookController {
     return iResponse(res, 200, "Get book successfully", book);
   }
 
+  static async getAll(req: Request, res: Response) {
+/*  #swagger.tags = ['Books']
+    #swagger.description = 'Endpoint to get all books.'
+    #swagger.summary = 'Get all books'
+    #swagger.security = [{
+            "bearerAuth": []
+    }]
+    } */
+    const result = await getAllBooks();
+    return iResponse(res, 200, "Get all books successfully", result);
+  }
 
   static async addBook(req: Request, res: Response) {
 /*  #swagger.tags = ['Books']

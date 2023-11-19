@@ -195,6 +195,34 @@
         ]
       }
     },
+    "/books/get-all": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get all books",
+        "description": "Endpoint to get all books.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/books/new": {
       "post": {
         "tags": [
@@ -231,226 +259,6 @@
             }
           }
         }
-      }
-    },
-    "/borrows/record/get-all": {
-      "get": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Get all records",
-        "description": "Endpoint to get all records.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/borrows/record/get/{record_id}": {
-      "get": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Get record",
-        "description": "Endpoint to get record.",
-        "parameters": [
-          {
-            "name": "record_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/borrows/record/add": {
-      "post": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Add new record",
-        "description": "Endpoint to add new record.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/record"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/borrows/record/update/{record_id}": {
-      "patch": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Add new record",
-        "description": "Endpoint to add new record.",
-        "parameters": [
-          {
-            "name": "record_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/record"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/borrows/record/delete/{record_id}": {
-      "delete": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Delete record",
-        "description": "Endpoint to delete record.",
-        "parameters": [
-          {
-            "name": "record_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/borrows/record/return/{record_id}": {
-      "patch": {
-        "tags": [
-          "Records"
-        ],
-        "summary": "Return book",
-        "description": "Endpoint to return book.",
-        "parameters": [
-          {
-            "name": "record_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
       }
     },
     "/borrows/borrower/get-all": {
@@ -608,6 +416,438 @@
         ],
         "summary": "Add new borrower",
         "description": "Endpoint to add new borrower.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/records/get-all": {
+      "get": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Get all records",
+        "description": "Endpoint to get all records.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/records/get/{record_id}": {
+      "get": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Get record",
+        "description": "Endpoint to get record.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/records/add": {
+      "post": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Add new record",
+        "description": "Endpoint to add new record.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/record"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/records/update/{record_id}": {
+      "patch": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Add new record",
+        "description": "Endpoint to add new record.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/record"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/records/delete/{record_id}": {
+      "delete": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Delete record",
+        "description": "Endpoint to delete record.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/records/return/{record_id}": {
+      "patch": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Return book",
+        "description": "Endpoint to return book.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/publishers/get-all": {
+      "get": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Get all publishers",
+        "description": "Endpoint to get all publishers.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/publishers/get/{borrower_id}": {
+      "get": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Get publisher by id",
+        "description": "Endpoint to get publisher by id.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/publishers/get-books": {
+      "get": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Get all books of a publisher",
+        "description": "Endpoint to get all books of a publisher.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/publishers/add": {
+      "post": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Add new publisher",
+        "description": "Endpoint to add new publisher.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/publisher"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publishers/update/{borrower_id}": {
+      "patch": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Update publisher",
+        "description": "Endpoint to update publisher.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/publisher"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publishers/delete/{borrower_id}": {
+      "delete": {
+        "tags": [
+          "Publishers"
+        ],
+        "summary": "Delete publisher",
+        "description": "Endpoint to delete publisher.",
         "parameters": [
           {
             "name": "borrower_id",

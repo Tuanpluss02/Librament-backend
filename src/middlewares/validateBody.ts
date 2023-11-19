@@ -59,3 +59,43 @@ export const updateBookValidate = (
 ) => {
   validateBody(req, res, next, newbookSchema);
 };
+
+export const updateRecordValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const updatePublisherValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const newPublisherValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const newBorrowerValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const updateBorrowerValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
