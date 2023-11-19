@@ -19,7 +19,7 @@ export default class BookController {
             "bearerAuth": []
     }]
     } */
-    const { book_id } = req.params;
+    const book_id = req.query.id as string;
     const book = await getBookById(book_id);
     if (!book) {
       return iResponse(res, 404, "Book not found");
@@ -122,6 +122,8 @@ export default class BookController {
     });
     return iResponse(res, 200, "Update book successfully", result);
   }
+
+
   static async deleteBook(req: Request, res: Response) {
 /*  #swagger.tags = ['Books']
     #swagger.description = 'Endpoint to delete book.'
