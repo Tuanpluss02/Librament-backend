@@ -9,7 +9,15 @@ import { iResponse } from "../utils/iResponse";
 import { nextId } from "../utils/id_manage";
 
 export default class BookController {
+
   static async getBook(req: Request, res: Response) {
+/*  #swagger.tags = ['Books'] 
+    #swagger.description = 'Endpoint to get book.'
+    #swagger.summary = 'Get book'
+    #swagger.security = [{
+            "apiKeyAuth": []
+    }]
+    } */
     const { book_id } = req.params;
     const book = await getBookById(book_id);
     if (!book) {
@@ -20,6 +28,22 @@ export default class BookController {
 
 
   static async addBook(req: Request, res: Response) {
+/*  #swagger.tags = ['Books']
+    #swagger.description = 'Endpoint to add new book.'
+    #swagger.summary = 'Add new book'
+    #swagger.security = [{
+            "apiKeyAuth": []
+    }]
+    #swagger.requestBody = {
+      required: true,
+      content: {
+        "application/x-www-form-urlencoded": {
+          schema: {
+            $ref: "#/definitions/book"
+          }
+        }
+      }
+    } */
     const {
       title,
       author,
@@ -42,7 +66,25 @@ export default class BookController {
     });
     return iResponse(res, 201, "Add new book successfully", result);
   }
+
+
   static async updateBook(req: Request, res: Response) {
+  /*#swagger.tags = ['Books']
+    #swagger.description = 'Endpoint to update book.'
+    #swagger.summary = 'Update book'
+    #swagger.security = [{
+            "apiKeyAuth": []
+    }]
+    #swagger.requestBody = {
+      required: true,
+      content: {
+        "application/x-www-form-urlencoded": {
+          schema: {
+            $ref: "#/definitions/book"
+          }
+        }
+      }
+    } */
     const { book_id } = req.params;
     const {
       title,
@@ -69,6 +111,14 @@ export default class BookController {
     return iResponse(res, 200, "Update book successfully", result);
   }
   static async deleteBook(req: Request, res: Response) {
+/*  #swagger.tags = ['Books']
+    #swagger.description = 'Endpoint to delete book.'
+    #swagger.summary = 'Delete book'
+    #swagger.security = [{
+            "apiKeyAuth": []
+    }]
+    } */
+    
     const { book_id } = req.params;
     const book = await getBookById(book_id);
     if (!book) {

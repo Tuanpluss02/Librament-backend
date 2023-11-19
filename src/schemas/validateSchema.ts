@@ -20,3 +20,19 @@ export const newbookSchema: ObjectSchema = Joi.object({
   isbn: Joi.string().required(),
   quantity: Joi.number().required(),
 });
+
+export const updateBookSchema: ObjectSchema = Joi.object({
+  publisher_id: Joi.string(),
+  title: Joi.string(),
+  author: Joi.string(),
+  genre: Joi.string(),
+  publication_year: Joi.number(),
+  isbn: Joi.string(),
+  quantity: Joi.number(),
+});
+
+export const newBorrowerSchema: ObjectSchema = Joi.object({
+  full_name: Joi.string().required(),
+  address: Joi.string().required(),
+  phone_number: Joi.string().required(),
+})

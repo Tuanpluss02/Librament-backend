@@ -7,6 +7,7 @@ CREATE TABLE publishers (
     publisher_id VARCHAR(55) PRIMARY KEY NOT NULL,
     publisher_name VARCHAR(255) NOT NULL
 );
+
 CREATE TABLE books (
     book_id VARCHAR(55) PRIMARY KEY NOT NULL,
     publisher_id VARCHAR(55) NOT NULL,
@@ -30,11 +31,13 @@ CREATE TABLE borrowing_records (
     record_id VARCHAR(55) PRIMARY KEY NOT NULL,
     book_id VARCHAR(55) NOT NULL,
     borrower_id VARCHAR(55) NOT NULL,
+    employee_id VARCHAR(55) NOT NULL,
     borrow_date DATE NOT NULL,
     return_date DATE NOT NULL,
     status ENUM('borrowed', 'returned', 'overdue', 'pending') NOT NULL,
     FOREIGN KEY (book_id) REFERENCES books(book_id),
     FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
 
 CREATE TABLE employees (

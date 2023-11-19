@@ -1,0 +1,705 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API Documentation",
+    "description": "Description of your API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "API for authentication"
+    },
+    {
+      "name": "Books",
+      "description": "API for managing books"
+    },
+    {
+      "name": "Records",
+      "description": "API for managing records"
+    },
+    {
+      "name": "Borrowers",
+      "description": "API for managing borrowers"
+    },
+    {
+      "name": "Publishers",
+      "description": "API for managing publishers"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "description": "Endpoint to login.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/login"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register",
+        "description": "Endpoint to register.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/register"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book_id}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get book",
+        "description": "Endpoint to get book.",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Update book",
+        "description": "Endpoint to update book.",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/book"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Delete book",
+        "description": "Endpoint to delete book.",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/books/new": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Add new book",
+        "description": "Endpoint to add new book.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/book"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/borrows/record/get-all": {
+      "get": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Get all records",
+        "description": "Endpoint to get all records.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/record/get/{record_id}": {
+      "get": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Get record",
+        "description": "Endpoint to get record.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/record/add": {
+      "post": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Add new record",
+        "description": "Endpoint to add new record.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/record"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/borrows/record/update/{record_id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/borrows/record/delete/{record_id}": {
+      "delete": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Delete record",
+        "description": "Endpoint to delete record.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/record/return/{record_id}": {
+      "patch": {
+        "tags": [
+          "Records"
+        ],
+        "summary": "Return book",
+        "description": "Endpoint to return book.",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/borrower/get-all": {
+      "get": {
+        "tags": [
+          "Borrowers"
+        ],
+        "summary": "Get all borrowers",
+        "description": "Endpoint to get all borrowers.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/borrower/get/{borrower_id}": {
+      "get": {
+        "tags": [
+          "Borrowers"
+        ],
+        "summary": "Get borrower",
+        "description": "Endpoint to get borrower.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/borrower/add": {
+      "post": {
+        "tags": [
+          "Borrowers"
+        ],
+        "summary": "Add new borrower",
+        "description": "Endpoint to add new borrower.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/borrower"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/borrows/borrower/update/{borrower_id}": {
+      "patch": {
+        "tags": [
+          "Borrowers"
+        ],
+        "summary": "Update borrower",
+        "description": "Endpoint to update borrower.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/borrower"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/borrows/borrower/delete/{borrower_id}": {
+      "delete": {
+        "tags": [
+          "Borrowers"
+        ],
+        "summary": "Add new borrower",
+        "description": "Endpoint to add new borrower.",
+        "parameters": [
+          {
+            "name": "borrower_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "register": {
+        "type": "object",
+        "properties": {
+          "employee_name": {
+            "type": "string",
+            "example": "Nguyen Van A"
+          },
+          "password": {
+            "type": "string",
+            "example": "Abc123!@#"
+          },
+          "position": {
+            "type": "string",
+            "example": "admin"
+          }
+        },
+        "required": [
+          "employee_name",
+          "password",
+          "position"
+        ]
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "employee_id": {
+            "type": "string",
+            "example": "EMP0001"
+          },
+          "password": {
+            "type": "string",
+            "example": "Abc123!@#"
+          }
+        },
+        "required": [
+          "employee_id",
+          "password"
+        ]
+      },
+      "borrower": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "example": "Borrower name"
+          },
+          "address": {
+            "type": "string",
+            "example": "Borrower address"
+          },
+          "phone_number": {
+            "type": "string",
+            "example": "Borrower phone number"
+          }
+        },
+        "required": [
+          "full_name",
+          "address",
+          "phone_number"
+        ]
+      },
+      "book": {
+        "type": "object",
+        "properties": {
+          "publisher_id": {
+            "type": "string",
+            "example": "PUB0001"
+          },
+          "title": {
+            "type": "string",
+            "example": "Book title"
+          },
+          "author": {
+            "type": "string",
+            "example": "Book author"
+          },
+          "genre": {
+            "type": "string",
+            "example": "Book genre"
+          },
+          "publication_year": {
+            "type": "number",
+            "example": 2021
+          },
+          "isbn": {
+            "type": "string",
+            "example": "Book ISBN"
+          },
+          "quantity": {
+            "type": "number",
+            "example": 10
+          }
+        },
+        "required": [
+          "publisher_id",
+          "title",
+          "author",
+          "genre",
+          "publication_year",
+          "isbn",
+          "quantity"
+        ]
+      },
+      "record": {
+        "type": "object",
+        "properties": {
+          "book_id": {
+            "type": "string",
+            "example": "BOOK0001"
+          },
+          "employee_id": {
+            "type": "string",
+            "example": "EMP0001"
+          },
+          "borrower_id": {
+            "type": "string",
+            "example": "BOR0001"
+          },
+          "borrow_date": {
+            "type": "string",
+            "example": "20/10/2023"
+          },
+          "return_date": {
+            "type": "string",
+            "example": "20/11/2023"
+          },
+          "status": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "string"
+              },
+              "enum": {
+                "type": "array",
+                "example": [
+                  "borrowed",
+                  "returned",
+                  "pending"
+                ],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "type": "string",
+                "example": "borrowed"
+              }
+            }
+          }
+        },
+        "required": [
+          "book_id",
+          "employee_id",
+          "borrower_id",
+          "borrow_date",
+          "return_date",
+          "status"
+        ]
+      },
+      "publisher": {
+        "type": "object",
+        "properties": {
+          "publisher_name": {
+            "type": "string",
+            "example": "Publisher name"
+          }
+        },
+        "required": [
+          "publisher_name"
+        ]
+      }
+    }
+  }
+}
