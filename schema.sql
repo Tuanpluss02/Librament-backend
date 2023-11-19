@@ -83,10 +83,8 @@ INSERT INTO books VALUES ('BOOK0009', 'PUB0002', 'Harry Potter và Chiếc cốc
 
 INSERT INTO books VALUES ('BOOK0010', 'PUB0003', 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
 INSERT INTO books VALUES ('BOOK0011', 'PUB0003', 'Cho tôi xin một vé đi tuổi thơ', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
-
 INSERT INTO books VALUES ('BOOK0012', 'PUB0004', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
-
-INSERT INTO books VALUES ('BOOK0013', 'PUB0005', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0013', 'PUB0004', 'Nhật ký Đặng Thùy Trâm 2', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
 
 
 INSERT INTO borrowers VALUES ('BOR0001', 'Nguyễn Văn A', 'Hà Nội', '0123456789');

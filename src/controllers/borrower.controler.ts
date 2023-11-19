@@ -70,7 +70,7 @@ export default class BorrowController {
     }
 
     static async updateBorrower(req: Request, res: Response) {
-        /*#swagger.tags = ['Borrowers']
+    /*#swagger.tags = ['Borrowers']
     #swagger.description = 'Endpoint to update borrower.'
     #swagger.summary = 'Update borrower'
     #swagger.security = [{
