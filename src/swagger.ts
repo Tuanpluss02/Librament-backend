@@ -71,11 +71,7 @@ const doc = {
         $borrower_id: "BOR0001",
         $borrow_date: "20/10/2023",
         $return_date: "20/11/2023",
-        $status: {
-          type: "string",
-          enum: ["borrowed", "returned", "pending"],
-          example: "borrowed",
-        },
+        $status: "Borrowed",
       },
       publisher: {
         $publisher_name: "Publisher name",

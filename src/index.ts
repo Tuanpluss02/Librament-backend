@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import AuthRoute from "./routes/auth.route";
 import BookRoute from "./routes/book.route";
 import BorrowRoute from "./routes/borrow.route";
+import RecordRoute from "./routes/record.route";
+import PublisherRoute from "./routes/publisher.route";
 import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger-output.json";
@@ -19,6 +21,9 @@ app.use(cors());
 app.use("/auth", AuthRoute);
 app.use("/books", BookRoute);
 app.use("/borrows", BorrowRoute);
+app.use("/records", RecordRoute);
+app.use("/publishers", PublisherRoute);
+
 
 app.use(
   "/docs",

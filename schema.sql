@@ -6,6 +6,8 @@ USE library_system;
 CREATE TABLE publishers (
     publisher_id VARCHAR(55) PRIMARY KEY NOT NULL,
     publisher_name VARCHAR(255) NOT NULL
+    address VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE books (

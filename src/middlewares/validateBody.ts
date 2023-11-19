@@ -1,8 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import e, { NextFunction, Request, Response } from "express";
 import {
   registerSchema,
   loginSchema,
   newbookSchema,
+  recordSchema,
 } from "../schemas/validateSchema";
 import { iResponse } from "../utils/iResponse";
 import Joi from "joi";
@@ -41,4 +42,60 @@ export const newbookBodyValidate = (
   next: NextFunction
 ) => {
   validateBody(req, res, next, newbookSchema);
+};
+
+export const newRecordValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+}
+
+export const updateBookValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, newbookSchema);
+};
+
+export const updateRecordValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const updatePublisherValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const newPublisherValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const newBorrowerValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
+};
+
+export const updateBorrowerValidate = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  validateBody(req, res, next, recordSchema);
 };
