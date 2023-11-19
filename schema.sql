@@ -61,12 +61,11 @@ INSERT INTO code_table VALUES ('PUB', 0);
 INSERT INTO code_table VALUES ('BOOK', 0);
 
 
--- insert vietnamese data
-INSERT INTO publishers VALUES ('PUB0001', 'Nhà xuất bản Kim Đồng');
-INSERT INTO publishers VALUES ('PUB0002', 'Nhà xuất bản Trẻ');
-INSERT INTO publishers VALUES ('PUB0003', 'Nhà xuất bản Giáo dục');
-INSERT INTO publishers VALUES ('PUB0004', 'Nhà xuất bản Thanh Niên');
-INSERT INTO publishers VALUES ('PUB0005', 'Nhà xuất bản Văn hóa - Văn nghệ');
+INSERT INTO publishers VALUES ('PUB0001', 'Nhà xuất bản Kim Đồng', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0002', 'Nhà xuất bản Trẻ', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0003', 'Nhà xuất bản Văn học', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0004', 'Nhà xuất bản Hội Nhà văn', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0005', 'Nhà xuất bản Thanh Niên', 'Hà Nội', '0123456789');
 
 
 INSERT INTO books VALUES ('BOOK0001', 'PUB0001', 'Bố Già', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);

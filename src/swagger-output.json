@@ -261,7 +261,7 @@
         }
       }
     },
-    "/borrows/borrower/get-all": {
+    "/borrows/get-all": {
       "get": {
         "tags": [
           "Borrowers"
@@ -289,7 +289,7 @@
         ]
       }
     },
-    "/borrows/borrower/get/{borrower_id}": {
+    "/borrows/get/{borrower_id}": {
       "get": {
         "tags": [
           "Borrowers"
@@ -325,7 +325,7 @@
         ]
       }
     },
-    "/borrows/borrower/add": {
+    "/borrows/add": {
       "post": {
         "tags": [
           "Borrowers"
@@ -363,7 +363,7 @@
         }
       }
     },
-    "/borrows/borrower/update/{borrower_id}": {
+    "/borrows/update/{borrower_id}": {
       "patch": {
         "tags": [
           "Borrowers"
@@ -409,7 +409,7 @@
         }
       }
     },
-    "/borrows/borrower/delete/{borrower_id}": {
+    "/borrows/delete/{borrower_id}": {
       "delete": {
         "tags": [
           "Borrowers"
@@ -693,7 +693,7 @@
         ]
       }
     },
-    "/publishers/get/{borrower_id}": {
+    "/publishers/get/{publisher_id}": {
       "get": {
         "tags": [
           "Publishers"
@@ -702,7 +702,7 @@
         "description": "Endpoint to get publisher by id.",
         "parameters": [
           {
-            "name": "borrower_id",
+            "name": "publisher_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -729,7 +729,7 @@
         ]
       }
     },
-    "/publishers/get-books": {
+    "/publishers/{publisher_id}/get-books": {
       "get": {
         "tags": [
           "Publishers"
@@ -737,6 +737,14 @@
         "summary": "Get all books of a publisher",
         "description": "Endpoint to get all books of a publisher.",
         "parameters": [
+          {
+            "name": "publisher_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "authorization",
             "in": "header",
