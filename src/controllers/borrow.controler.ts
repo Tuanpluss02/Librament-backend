@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { nextId } from "../utils/id_manage";
-import {addNewBorrower, addNewRecord, deleteBorrowerById, getAllBorrowers, getAllRecords, getBorrowerById, getRecordById, updateBorrowerInfor, updateRecord } from "../services/borrow.service";
+import {addNewBorrower, deleteBorrowerById, getAllBorrowers, getBorrowerById, updateBorrowerInfor } from "../services/borrow.service";
 import { iResponse } from "../utils/iResponse";
 import { stringToDate } from "../utils/dateConvert";
 import { Status } from "../utils/enums";
+import { addNewRecord, getAllRecords, getRecordById, updateRecordInfor } from "../services/record.service";
 
 export default class BorrowController {
     static async addBorrower(req: Request, res: Response) {
@@ -149,8 +150,7 @@ export default class BorrowController {
     #swagger.summary = 'Return book'
     #swagger.security = [{
             "apiKeyAuth": []
-    }]
-    } */
+    }] */
 
         const { record_id } = req.params;
         const record = await getRecordById(record_id);
@@ -158,7 +158,7 @@ export default class BorrowController {
             return iResponse(res, 404, "Record not found");
         }
         const status = Status.returned;
-        const result = await updateRecord(record_id, {
+        const result = await updateRecordInfor(record_id, {
             status,
         });
         return iResponse(res, 200, "Return book successfully", result);
@@ -199,7 +199,17 @@ export default class BorrowController {
     #swagger.security = [{
             "apiKeyAuth": []
     }]
-        } */
+    #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/x-www-form-urlencoded": {
+            schema: {
+              $ref: "#/definitions/record"
+            }
+          }
+        }
+    }
+    */
         const { record_id } = req.params;
         const { book_id, borrower_id, borrow_date, return_date, status } = req.body;
         const record = await getRecordById(record_id);
@@ -208,7 +218,7 @@ export default class BorrowController {
         }
         const borrow_date_format = stringToDate(borrow_date);
         const return_date_format = stringToDate(return_date);
-        const result = await updateRecord(record_id, {
+        const result = await updateRecordInfor(record_id, {
             book_id,
             borrower_id,
             borrow_date: borrow_date_format,
