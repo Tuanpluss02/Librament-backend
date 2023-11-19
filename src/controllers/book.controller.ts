@@ -6,20 +6,21 @@ import {
   updateBookInfor,
 } from "../services/book.service";
 import { iResponse } from "../utils/iResponse";
+import { nextId } from "../utils/id_manage";
 
 export default class BookController {
   static async getBook(req: Request, res: Response) {
     const { book_id } = req.params;
     const book = await getBookById(book_id);
-
     if (!book) {
       return iResponse(res, 404, "Book not found");
     }
     return iResponse(res, 200, "Get book successfully", book);
   }
+
+
   static async addBook(req: Request, res: Response) {
     const {
-      book_id,
       title,
       author,
       genre,
@@ -28,11 +29,7 @@ export default class BookController {
       quantity,
       publisher_id,
     } = req.body;
-    const book = await getBookById(book_id);
-    console.log(book);
-    if (book) {
-      return iResponse(res, 400, "Book already exists");
-    }
+    const book_id = await nextId("BOOK");
     const result = await addNewBook({
       book_id,
       title,

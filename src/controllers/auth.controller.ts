@@ -3,6 +3,7 @@ import { addEmployee, getEmployeeById } from "../services/employee.service";
 import { generateToken } from "../utils/jwtUtil";
 import { PasswordUtil } from "../utils/passwordUtil";
 import { iResponse } from "../utils/iResponse";
+import { nextId, updateId } from "../utils/id_manage";
 export default class AuthController {
   static async login(req: Request, res: Response) {
     const { employee_id, password } = req.body;
@@ -22,11 +23,8 @@ export default class AuthController {
   }
 
   static async register(req: Request, res: Response) {
-    const { employee_id, employee_name, password, position } = req.body;
-    const user = await getEmployeeById(employee_id);
-    if (user) {
-      return iResponse(res, 400, "ID already exists");
-    }
+    const {employee_name, password, position } = req.body;
+    const employee_id = await nextId("EMP");
     const result = await addEmployee({
       employee_id,
       employee_name,
