@@ -24,11 +24,11 @@ export default class BorrowController {
         }
       }
     } */
-        const { borrower_name, address, phone_number } = req.body;
+        const { full_name, address, phone_number } = req.body;
         const borrower_id = await nextId("BOR");
         const result = await addNewBorrower({
             borrower_id,
-            borrower_name,
+            full_name,
             address,
             phone_number,
         });
