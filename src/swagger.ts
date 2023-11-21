@@ -74,6 +74,8 @@ const doc = {
       },
       publisher: {
         $publisher_name: "Publisher name",
+        $address: "Publisher address",
+        $phone_number: "Publisher phone number",
       }
     },
   },
