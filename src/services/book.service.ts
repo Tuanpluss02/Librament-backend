@@ -32,10 +32,11 @@ export const getBookById = async (book_id: string) => {
   }
 };
 export const getAllBooks = async () => {
-  try {
+  try{
     const sql = "SELECT * FROM books";
-    const [rows] = await (await conn).query(sql);
-    return rows;
+    const [rows] = await (await conn).query<RowDataPacket[]>(sql);
+    const result = rows;
+    return result;
   } catch (err) {
     throw err;
   }

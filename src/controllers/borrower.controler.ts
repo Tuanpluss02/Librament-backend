@@ -42,8 +42,14 @@ export default class BorrowController {
     #swagger.security = [{
             "bearerAuth": []
     }]
-    } */
-        const { borrower_id } = req.params;
+    #swagger.parameters['borrower_id'] = {
+            in: 'query',
+            required: true,
+            type: 'string'
+    }
+    }
+    */
+        const borrower_id  = req.query.borrower_id as string;
         const borrower = await getBorrowerById(borrower_id);
         if (!borrower) {
             return iResponse(res, 404, "Borrower not found");
@@ -64,14 +70,13 @@ export default class BorrowController {
     }
 
     static async updateBorrower(req: Request, res: Response) {
-        /*#swagger.tags = ['Borrowers']
+    /*#swagger.tags = ['Borrowers']
     #swagger.description = 'Endpoint to update borrower.'
     #swagger.summary = 'Update borrower'
     #swagger.security = [{
             "bearerAuth": []
     }]
     #swagger.requestBody = {
-        required: true,
         content: {
           "application/x-www-form-urlencoded": {
             schema: {

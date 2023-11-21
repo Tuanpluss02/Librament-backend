@@ -38,7 +38,7 @@ CREATE TABLE borrowing_records (
     return_date DATE NOT NULL,
     status ENUM('borrowed', 'returned', 'overdue', 'pending') NOT NULL,
     FOREIGN KEY (book_id) REFERENCES books(book_id),
-    FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id)
+    FOREIGN KEY (borrower_id) REFERENCES borrowers(borrower_id),
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
 );
 
@@ -61,12 +61,11 @@ INSERT INTO code_table VALUES ('PUB', 0);
 INSERT INTO code_table VALUES ('BOOK', 0);
 
 
--- insert vietnamese data
-INSERT INTO publishers VALUES ('PUB0001', 'Nhà xuất bản Kim Đồng');
-INSERT INTO publishers VALUES ('PUB0002', 'Nhà xuất bản Trẻ');
-INSERT INTO publishers VALUES ('PUB0003', 'Nhà xuất bản Giáo dục');
-INSERT INTO publishers VALUES ('PUB0004', 'Nhà xuất bản Thanh Niên');
-INSERT INTO publishers VALUES ('PUB0005', 'Nhà xuất bản Văn hóa - Văn nghệ');
+INSERT INTO publishers VALUES ('PUB0001', 'Nhà xuất bản Kim Đồng', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0002', 'Nhà xuất bản Trẻ', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0003', 'Nhà xuất bản Văn học', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0004', 'Nhà xuất bản Hội Nhà văn', 'Hà Nội', '0123456789');
+INSERT INTO publishers VALUES ('PUB0005', 'Nhà xuất bản Thanh Niên', 'Hà Nội', '0123456789');
 
 
 INSERT INTO books VALUES ('BOOK0001', 'PUB0001', 'Bố Già', 'Mario Puzo', 'Tiểu thuyết', '1969', '978-604-77-1234-5', 10);
@@ -84,10 +83,8 @@ INSERT INTO books VALUES ('BOOK0009', 'PUB0002', 'Harry Potter và Chiếc cốc
 
 INSERT INTO books VALUES ('BOOK0010', 'PUB0003', 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
 INSERT INTO books VALUES ('BOOK0011', 'PUB0003', 'Cho tôi xin một vé đi tuổi thơ', 'Nguyễn Nhật Ánh', 'Tiểu thuyết', '2000', '978-604-77-1234-5', 10);
-
 INSERT INTO books VALUES ('BOOK0012', 'PUB0004', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
-
-INSERT INTO books VALUES ('BOOK0013', 'PUB0005', 'Nhật ký Đặng Thùy Trâm', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
+INSERT INTO books VALUES ('BOOK0013', 'PUB0004', 'Nhật ký Đặng Thùy Trâm 2', 'Đặng Thùy Trâm', 'Tiểu thuyết', '2005', '978-604-77-1234-5', 10);
 
 
 INSERT INTO borrowers VALUES ('BOR0001', 'Nguyễn Văn A', 'Hà Nội', '0123456789');

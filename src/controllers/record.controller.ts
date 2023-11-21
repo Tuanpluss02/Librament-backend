@@ -24,7 +24,9 @@ export class RecordController {
               }
             }
             } */
+            
             const { book_id, borrower_id, borrow_date, return_date} = req.body;
+            const employee_id = res.locals.payload.sub;
             const record_id = await nextId("REC");
             const status = Status.borrowed;
             const borrow_date_format = stringToDate(borrow_date);
@@ -33,6 +35,7 @@ export class RecordController {
                 record_id,
                 book_id,
                 borrower_id,
+                employee_id,
                 borrow_date: borrow_date_format,
                 return_date: return_date_format,
                 status,
@@ -47,7 +50,7 @@ export class RecordController {
                 "bearerAuth": []
         }] */
     
-            const { record_id } = req.params;
+            const  record_id  = req.params.record_id as string;
             const record = await getRecordById(record_id);
             if (!record) {
                 return iResponse(res, 404, "Record not found");
@@ -66,9 +69,13 @@ export class RecordController {
         #swagger.security = [{
                 "bearerAuth": []
         }]
+        #swagger.parameters['record_id'] = {
+                in: 'query',
+                required: true,
+                type: 'string'
         } */
     
-            const { record_id } = req.params;
+            const record_id = req.query.record_id as string;
             const record = await getRecordById(record_id);
             if (!record) {
                 return iResponse(res, 404, "Record not found");
@@ -95,7 +102,6 @@ export class RecordController {
                 "bearerAuth": []
         }]
         #swagger.requestBody = {
-            required: true,
             content: {
               "application/x-www-form-urlencoded": {
                 schema: {

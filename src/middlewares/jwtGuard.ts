@@ -10,12 +10,10 @@ export const jwtGuard = (req: Request, res: Response, next: NextFunction) => {
       return iResponse(res, 401, "Token not found");
     }
     const payload = verifyToken(token);
-    console.log(payload);
     if (!payload) {
       return iResponse(res, 401, "Invalid token");
     }
-    res.locals.employee_id = payload.sub;
-    res.locals.position = payload.position;
+    res.locals.payload = payload;
     next();
   } catch (err) {
     console.log(err);

@@ -6,8 +6,8 @@ import { newPublisherValidate, updatePublisherValidate } from "../middlewares/va
 
 const router = Router();
 router.get("/get-all", [jwtGuard], PublisherController.getAll);
-router.get("/get/:borrower_id", [jwtGuard], PublisherController.getById);
-router.get("/get-books", [jwtGuard], PublisherController.getAllBooks);
+router.get("/get/", [jwtGuard], PublisherController.getById);
+router.get("/:publisher_id/get-books", [jwtGuard], PublisherController.getAllBooks);
 router.post("/add", [jwtGuard, newPublisherValidate], PublisherController.addPublisher);
 router.patch("/update/:borrower_id", [jwtGuard,updatePublisherValidate], PublisherController.update);
 router.delete("/delete/:borrower_id", [jwtGuard], PublisherController.delete);

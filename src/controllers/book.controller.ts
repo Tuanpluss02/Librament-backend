@@ -18,8 +18,13 @@ export default class BookController {
     #swagger.security = [{
             "bearerAuth": []
     }]
+    #swagger.parameters['book_id'] = {
+            in: 'query',
+            required: true,
+            type: 'string'
+    }
     } */
-    const { book_id } = req.params;
+    const book_id = req.query.book_id as string;
     const book = await getBookById(book_id);
     if (!book) {
       return iResponse(res, 404, "Book not found");
@@ -88,7 +93,6 @@ export default class BookController {
             "bearerAuth": []
     }]
     #swagger.requestBody = {
-      required: true,
       content: {
         "application/x-www-form-urlencoded": {
           schema: {
@@ -122,6 +126,8 @@ export default class BookController {
     });
     return iResponse(res, 200, "Update book successfully", result);
   }
+
+
   static async deleteBook(req: Request, res: Response) {
 /*  #swagger.tags = ['Books']
     #swagger.description = 'Endpoint to delete book.'

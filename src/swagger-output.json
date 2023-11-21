@@ -81,7 +81,7 @@
         }
       }
     },
-    "/books/{book_id}": {
+    "/books/get": {
       "get": {
         "tags": [
           "Books"
@@ -90,94 +90,16 @@
         "description": "Endpoint to get book.",
         "parameters": [
           {
-            "name": "book_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "authorization",
             "in": "header",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Update book",
-        "description": "Endpoint to update book.",
-        "parameters": [
-          {
-            "name": "book_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           },
           {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "$ref": "#/components/schemas/book"
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Books"
-        ],
-        "summary": "Delete book",
-        "description": "Endpoint to delete book.",
-        "parameters": [
-          {
             "name": "book_id",
-            "in": "path",
+            "in": "query",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
             "schema": {
               "type": "string"
             }
@@ -261,7 +183,89 @@
         }
       }
     },
-    "/borrows/borrower/get-all": {
+    "/books/update/{book_id}": {
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Update book",
+        "description": "Endpoint to update book.",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/book"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/delete/{book_id}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Delete book",
+        "description": "Endpoint to delete book.",
+        "parameters": [
+          {
+            "name": "book_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/borrows/get-all": {
       "get": {
         "tags": [
           "Borrowers"
@@ -289,7 +293,7 @@
         ]
       }
     },
-    "/borrows/borrower/get/{borrower_id}": {
+    "/borrows/get": {
       "get": {
         "tags": [
           "Borrowers"
@@ -298,16 +302,16 @@
         "description": "Endpoint to get borrower.",
         "parameters": [
           {
-            "name": "borrower_id",
-            "in": "path",
-            "required": true,
+            "name": "authorization",
+            "in": "header",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "authorization",
-            "in": "header",
+            "name": "borrower_id",
+            "in": "query",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -325,7 +329,7 @@
         ]
       }
     },
-    "/borrows/borrower/add": {
+    "/borrows/add": {
       "post": {
         "tags": [
           "Borrowers"
@@ -363,7 +367,7 @@
         }
       }
     },
-    "/borrows/borrower/update/{borrower_id}": {
+    "/borrows/update/{borrower_id}": {
       "patch": {
         "tags": [
           "Borrowers"
@@ -409,7 +413,7 @@
         }
       }
     },
-    "/borrows/borrower/delete/{borrower_id}": {
+    "/borrows/delete/{borrower_id}": {
       "delete": {
         "tags": [
           "Borrowers"
@@ -473,7 +477,7 @@
         ]
       }
     },
-    "/records/get/{record_id}": {
+    "/records/get": {
       "get": {
         "tags": [
           "Records"
@@ -482,16 +486,16 @@
         "description": "Endpoint to get record.",
         "parameters": [
           {
-            "name": "record_id",
-            "in": "path",
-            "required": true,
+            "name": "authorization",
+            "in": "header",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "authorization",
-            "in": "header",
+            "name": "record_id",
+            "in": "query",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -693,7 +697,7 @@
         ]
       }
     },
-    "/publishers/get/{borrower_id}": {
+    "/publishers/get/": {
       "get": {
         "tags": [
           "Publishers"
@@ -702,16 +706,16 @@
         "description": "Endpoint to get publisher by id.",
         "parameters": [
           {
-            "name": "borrower_id",
-            "in": "path",
-            "required": true,
+            "name": "authorization",
+            "in": "header",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "authorization",
-            "in": "header",
+            "name": "publisher_id",
+            "in": "query",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -729,7 +733,7 @@
         ]
       }
     },
-    "/publishers/get-books": {
+    "/publishers/{publisher_id}/get-books": {
       "get": {
         "tags": [
           "Publishers"
@@ -737,6 +741,14 @@
         "summary": "Get all books of a publisher",
         "description": "Endpoint to get all books of a publisher.",
         "parameters": [
+          {
+            "name": "publisher_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "authorization",
             "in": "header",
@@ -996,10 +1008,6 @@
             "type": "string",
             "example": "BOOK0001"
           },
-          "employee_id": {
-            "type": "string",
-            "example": "EMP0001"
-          },
           "borrower_id": {
             "type": "string",
             "example": "BOR0001"
@@ -1014,12 +1022,11 @@
           },
           "status": {
             "type": "string",
-            "example": "Borrowed"
+            "example": "borrowed"
           }
         },
         "required": [
           "book_id",
-          "employee_id",
           "borrower_id",
           "borrow_date",
           "return_date",
