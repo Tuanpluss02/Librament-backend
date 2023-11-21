@@ -1035,10 +1035,20 @@
           "publisher_name": {
             "type": "string",
             "example": "Publisher name"
+          },
+          "address": {
+            "type": "string",
+            "example": "Publisher address"
+          },
+          "phone_number": {
+            "type": "string",
+            "example": "Publisher phone number"
           }
         },
         "required": [
-          "publisher_name"
+          "publisher_name",
+          "address",
+          "phone_number"
         ]
       }
     }
