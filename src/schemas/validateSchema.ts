@@ -37,6 +37,12 @@ export const newBorrowerSchema: ObjectSchema = Joi.object({
   phone_number: Joi.string().required(),
 })
 
+export const updateBorrowerSchema: ObjectSchema = Joi.object({
+  full_name: Joi.string(),
+  address: Joi.string(),
+  phone_number: Joi.string(),
+})
+
 export const recordSchema: ObjectSchema = Joi.object({
   book_id: Joi.string().required(),
   borrower_id: Joi.string().required(),

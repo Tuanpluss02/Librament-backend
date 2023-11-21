@@ -12,7 +12,8 @@ export const nextId = async (id: string) => {
       console.log(err);
       throw err;
     }
-  }
+}
+  
 export const updateId = async (id: string) => {
     try {
       const sql = "UPDATE code_table SET code_number = code_number + 1 WHERE code_id = ?";

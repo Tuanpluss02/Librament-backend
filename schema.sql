@@ -1,4 +1,4 @@
--- Active: 1700356960557@@localhost@3306
+-- Active: 1700270750053@@localhost@3306@library_system
 CREATE DATABASE IF NOT EXISTS library_system;
 
 USE library_system;

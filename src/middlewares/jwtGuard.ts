@@ -1,6 +1,7 @@
 import { NextFunction, Response, Request } from "express";
 import { iResponse } from "../utils/iResponse";
 import { verifyToken } from "../utils/jwtUtil";
+import { request } from "http";
 
 export const jwtGuard = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -20,3 +21,4 @@ export const jwtGuard = (req: Request, res: Response, next: NextFunction) => {
     return iResponse(res, 401, "Invalid token");
   }
 };
+// client -> server: request -> middleware -> controller -> service -> database

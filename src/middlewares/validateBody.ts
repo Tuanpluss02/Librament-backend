@@ -4,6 +4,12 @@ import {
   loginSchema,
   newbookSchema,
   recordSchema,
+  newPublisherSchema,
+  updatePublisherSchema,
+  updateBookSchema,
+  updateRecordSchema,
+  newBorrowerSchema,
+  updateBorrowerSchema,
 } from "../schemas/validateSchema";
 import { iResponse } from "../utils/iResponse";
 import Joi from "joi";
@@ -57,7 +63,7 @@ export const updateBookValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, newbookSchema);
+  validateBody(req, res, next, updateBookSchema);
 };
 
 export const updateRecordValidate = (
@@ -65,7 +71,7 @@ export const updateRecordValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, recordSchema);
+  validateBody(req, res, next, updateRecordSchema);
 };
 
 export const updatePublisherValidate = (
@@ -73,7 +79,7 @@ export const updatePublisherValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, recordSchema);
+  validateBody(req, res, next, updatePublisherSchema);
 };
 
 export const newPublisherValidate = (
@@ -81,7 +87,7 @@ export const newPublisherValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, recordSchema);
+  validateBody(req, res, next, newPublisherSchema);
 };
 
 export const newBorrowerValidate = (
@@ -89,7 +95,7 @@ export const newBorrowerValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, recordSchema);
+  validateBody(req, res, next, newBorrowerSchema);
 };
 
 export const updateBorrowerValidate = (
@@ -97,5 +103,5 @@ export const updateBorrowerValidate = (
   res: Response,
   next: NextFunction
 ) => {
-  validateBody(req, res, next, recordSchema);
+  validateBody(req, res, next, updateBorrowerSchema);
 };

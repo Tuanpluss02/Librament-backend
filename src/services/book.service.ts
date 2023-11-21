@@ -31,6 +31,8 @@ export const getBookById = async (book_id: string) => {
     throw err;
   }
 };
+
+
 export const getAllBooks = async () => {
   try{
     const sql = "SELECT * FROM books";
@@ -58,6 +60,8 @@ export const updateBookInfor = async (book_id: string, book: any) => {
     throw err;
   }
 };
+
+
 export const deleteBookById = async (book_id: string) => {
   try {
     const sql = "DELETE FROM books WHERE book_id = ?";
